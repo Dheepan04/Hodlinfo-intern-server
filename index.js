@@ -7,10 +7,23 @@ import { HOD } from "./hod_model.js";
 const app = express();
 
 const corsOptions = {
-  origin: 'https://hodlinfo-dheepan.netlify.app/',
+  origin: 'https://hodlinfo-dheepan.netlify.app',
 };
 
 app.use(cors(corsOptions));
+
+const connectToMongoDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    throw error;
+  }
+};
 
 
 const connect = async (

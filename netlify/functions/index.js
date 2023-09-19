@@ -2,7 +2,7 @@ import express from "express";
 import axios from "axios";
 import cors from "cors";
 import mongoose from "mongoose";
-import { HOD } from "./hod_model.js";
+import { HOD } from "../../hod_model.js";
 
 const app = express();
 
